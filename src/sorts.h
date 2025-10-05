@@ -1,6 +1,6 @@
 #ifndef SORTS_H
 #define SORTS_H
-
+#include <stdbool.h>
 #include <stdlib.h>
 #include "sort_helper.h"
 
@@ -13,8 +13,18 @@
 // Output: The index in an array of the minimum value between a range [start,stop]
 int findMinimum(int *array, int start, int stop)
 {
-    return 0; // modify to return the index of the min value
+    int min = start; 
+   
+    for (int i = start + 1; i < stop; i++){
+        if (array[i] < array[min])
+        {
+            min = i;
+        }
+    }
+
+    return min;
 }
+
 
 
 // =============== Sort Function ===============
@@ -30,7 +40,25 @@ int findMinimum(int *array, int start, int stop)
 // Output: No value is returned, but 'array' should be modified to store a sorted array of numbers.
 void selectionSortIntegers(int *array, unsigned int size, int print)
 {
-    // todo: implement selection sort
+ for (unsigned int i = 0; i < size - 1; i++) {
+    
+    // Find the index of the minimum value so we can start sorting
+    int min = findMinimum(array, i, size);  
+
+
+// If the smallest element isn’t already here, swap it into place
+        if (min != i)
+        {
+            swap(&array[i], &array[min]);
+        }
+
+// Print the array after every iteration if the print flag is set
+        if (print)
+        {
+            printf("Pass %u: ", i + 1);
+            printIntArray(array, size);
+        }
+    }
 }
 
 /***  Code for Insertion Sort ***/
@@ -48,8 +76,32 @@ void selectionSortIntegers(int *array, unsigned int size, int print)
 // Output: No value is returned, but 'array' should be modified to store a sorted array of numbers.
 void insertionSortIntegers(int *array, unsigned int size, int print)
 {
-    // TODO: Implement insertion sort
- 
+  // Start at the second element because the first one is already sorted
+    for (unsigned int i = 1; i < size; i++)
+    {
+        // The value we’re trying to put in the right spot then compare with the element to the left
+
+        int current = array[i];  
+        int j = i - 1;           
+        
+        // Shift everything bigger than current to the right 
+        // Move the element one spot to the right then check the next element to the left
+        while (j >= 0 && array[j] > current)
+        {
+            array[j + 1] = array[j]; 
+            j--;                     
+        }
+
+        // Put current where it belongs
+        array[j + 1] = current;
+
+        // Print the array after every iteration if print is on
+        if (print)
+        {
+            printf("Pass %u: ", i);
+            printIntArray(array, size);
+        }
+    } 
 
 }
 
@@ -66,9 +118,32 @@ void insertionSortIntegers(int *array, unsigned int size, int print)
 // param(3) 'print' tells it to print out after each iteration.
 // Output:   No value is returned, but 'array' should
 //           be modified to store a sorted array of size.
-void bubbleSortIntegers(int *array, unsigned int size, int print)
-{
-    // code generated from lab
+void bubbleSortIntegers(int *array, unsigned int size, int print){
+
+    bool swapped;
+
+    for (unsigned int i = 0; i < size - 1; i++) {
+        swapped = false;
+
+        // Compare each pair and swap if needed
+        for (unsigned int j = 0; j < size - i - 1; j++) {
+            if (array[j] > array[j + 1]) {
+                swap(&array[j], &array[j + 1]);
+                swapped = true;
+            }
+        }
+
+        // Print the array after each pass if print is on
+        if (print) {
+            printf("Pass %u: ", i + 1);
+            printIntArray(array, size);
+        }
+
+        // If nothing was swapped, the array is sorted
+        if (!swapped) {
+            break;
+        }
+    }
 
 }
 
@@ -79,15 +154,40 @@ void bubbleSortIntegers(int *array, unsigned int size, int print)
 // Second subarray is arr[m+1..r]
 void merge(int arr[], int temp[], int l, int m, int r)
 {
+  // make sure arrays exist, otherwise quit
     if (arr == NULL || temp == NULL)
     {
         exit(1);
     }
 
+    // check if the ranges are valid, if not just stop
     if (l > m || m + 1 > r)
         return;
 
+    int i = l;     // start of left part
+    int j = m + 1; // start of right part
+    int k = l;     // position to put next smallest element in temp
 
+    // go through both subarrays and put the smaller one in temp
+    while (i <= m && j <= r)
+    {
+        if (arr[i] <= arr[j])
+            temp[k++] = arr[i++]; // left smaller, put it and move
+        else
+            temp[k++] = arr[j++]; // right smaller, put it and move
+    }
+
+    // copy leftover elements from left part
+    while (i <= m)
+        temp[k++] = arr[i++];
+
+    // copy leftover elements from right part
+    while (j <= r)
+        temp[k++] = arr[j++];
+
+    // copy sorted stuff back into original array
+    for (i = l; i <= r; i++)
+        arr[i] = temp[i];
 }
 
 // To be built during week 6 lab
@@ -101,7 +201,26 @@ void merge(int arr[], int temp[], int l, int m, int r)
 // Output: No value is returned, but 'array' should be modified to store a sorted array of numbers.
 void merge_sort(int arr[], int temp[], int l, int r)
 {
-   
+    // make sure the arrays exist, if not just quit
+    if (arr == NULL || temp == NULL) {
+        exit(1);
+    }
+
+    // if there's 1 or 0 elements, it's already sorted
+    if (l >= r) {
+        return;
+    }
+
+    int m = (l + r) / 2; // find the middle
+
+    // sort the left half
+    merge_sort(arr, temp, l, m);
+
+    // sort the right half
+    merge_sort(arr, temp, m + 1, r);
+
+    // merge the two halves together
+    merge(arr, temp, l, m, r);
 }
 
 // lab build, merge sort
