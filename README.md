@@ -5,8 +5,9 @@ Name: Koshin Mohamed
 
 Github Account name: Koshin-M-Mohamed
 
-Link to Assignment on Github: (https://github.com/CS5008Fall2025/homework-sorts-Koshin-M-Mohamed.git
-)
+Link to Assignment on Github: 
+https://github.com/CS5008Fall2025/homework-sorts-Koshin-M-Mohamed.git
+
 
 How many hours did it take you to complete this assignment (estimate)? 
 
