@@ -174,21 +174,26 @@ For both these questions, are you are free to use what you did as the last secti
 ## Deeper Thinking
 Sorting algorithms are still being studied today. They often include a statistical analysis of data before sorting. This next question will require some research, as it isn't included in class content. When you call `sort()` or `sorted()` in Python 3.6+, what sort is it using? 
 
+According to Sorting Algorithims in python it using Timsort, a hybrid sorting algorith, that combines merge sort and insertion sort. It's efficient because it makes partially sorted sequences run faster. 
+
 #### Visualize
 Find a graphic / visualization (can be a youtube video) that demonstrates the sort in action. 
 
 #### Big O
 Give the worst and best case time-complexity, and examples that would generate them. 
 
+Best Case is O(n) when the array is already mostly sorted or completlry sorted.
+
+Worst Case is O(n log n) when the array is completely randomly sorted or in reverse order.
+
 <hr>
 
 ## References
 Add your references here. A good reference includes an inline citation, such as [1] , and then down in your references section, you include the full details of the reference. Use [ACM Reference format].
 
-GeeksforGeeks. "Analysis of Different Sorting Techniques." GeeksforGeeks, 2025.2. ...
+GeeksforGeeks. (2025). Analysis of Different Sorting Techniques. Retrieved from https://www.geeksforgeeks.org/dsa/analysis-of-different-sorting-techniques/
 
-
-
+Valdarrama, S. (2019). Sorting Algorithms in Python. Real Python. Retrieved from https://realpython.com/sorting-algorithms-python/
 
 
 ## Footnotes:
