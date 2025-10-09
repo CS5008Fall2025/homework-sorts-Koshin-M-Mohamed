@@ -39,7 +39,7 @@ int main(int argc, char *argv[])
 
     // make sure to add your own tests, such what happens when the dataset is {}?
 
- int empty_dataset[1] = {1};
+int empty_dataset[1] = {1};
 unsigned int empty_size = 0;
 if (empty_size > 0) {
     selectionSortIntegers(empty_dataset, empty_size, print);
