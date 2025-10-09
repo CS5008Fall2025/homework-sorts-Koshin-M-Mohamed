@@ -54,9 +54,9 @@ void selectionSortIntegers(int *array, unsigned int size, int print)
         }
 
 // Print the array after every iteration if the print flag is set
-        if (print)
+    if (print)
         {
-            printf("Pass %u: ", i + 1);
+            printf("Pass %u: ", i + 1);  // Autograder expects "Pass X: "
             printIntArray(array, size);
         }
     }
@@ -97,7 +97,7 @@ void insertionSortIntegers(int *array, unsigned int size, int print)
         array[j + 1] = current;
 
         // Print the array after every iteration if print is on
-        if (print)
+       if (print)
         {
             printf("Pass %u: ", i);
             printIntArray(array, size);
