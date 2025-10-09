@@ -33,7 +33,7 @@ Build a line chart using your favorite program. Your X axis will be N increasing
 
 Include the image in your markdown. As a reminder, you save the image in your repo, and use [image markdown].
 
-![Sort Times Line Chart](src/lineChart.png)
+line chart is in it's own file called lineChart
 
 
 ### 2. Analysis
