@@ -38,5 +38,25 @@ int main(int argc, char *argv[])
 
     // make sure to add your own tests, such what happens when the dataset is {}?
 
+// Test an empty array
+
+int empty_dataset[1] = {1};
+unsigned int empty_size = 0;
+insertionSortIntegers(empty_dataset, empty_size, print);
+printf("\n");
+
+// Test a single-element array
+
+int single_dataset[] = {82};
+insertionSortIntegers(single_dataset, 1, print);
+printf("\n");
+
+// Test an array with all duplicates
+
+int duplicates[] = {7, 7, 7, 7, 7};
+insertionSortIntegers(duplicates, 5, print);
+printf("\n");
+
+
     return 0;
 }
