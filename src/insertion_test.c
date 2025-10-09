@@ -39,7 +39,7 @@ int main(int argc, char *argv[])
     // make sure to add your own tests, such what happens when the dataset is {}?
 
 // Test an empty array
-
+ 
 int empty_dataset[1] = {1};
 unsigned int empty_size = 0;
 insertionSortIntegers(empty_dataset, empty_size, print);
