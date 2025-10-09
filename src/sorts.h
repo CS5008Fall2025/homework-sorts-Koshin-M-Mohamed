@@ -40,25 +40,24 @@ int findMinimum(int *array, int start, int stop)
 // Output: No value is returned, but 'array' should be modified to store a sorted array of numbers.
 void selectionSortIntegers(int *array, unsigned int size, int print)
 { 
-      if (size <= 1) return; 
-    for (unsigned int i = 0; i < size - 1; i++) {
-    
-    // Find the index of the minimum value so we can start sorting
-    int min = findMinimum(array, i, size);  
+    if (size <= 1) return; 
+    for (unsigned int i = 0; i < size - 1; i++) 
+    {
+        // Find the index of the minimum value so we can start sorting
+        int min = findMinimum(array, i, size);  
 
-
-// If the smallest element isn’t already here, swap it into place
+        // If the smallest element isn’t already here, swap it into place
         if (min != i)
         {
             swap(&array[i], &array[min]);
         }
 
-// Print the array after every iteration if the print flag is set
-    if (print)
+         // Print the array after every iteration if the print flag is set
+        if (print)
         {
-            printf("Pass %u: ", i + 1);  // Autograder expects "Pass X: "
             printIntArray(array, size);
         }
+
     }
 }
 
@@ -76,8 +75,9 @@ void selectionSortIntegers(int *array, unsigned int size, int print)
 //  - 'print' tells it to print out after each iteration 
 // Output: No value is returned, but 'array' should be modified to store a sorted array of numbers.
 void insertionSortIntegers(int *array, unsigned int size, int print)
-{
-  // Start at the second element because the first one is already sorted
+{   if (size <= 1) return;
+  
+    // Start at the second element because the first one is already sorted
     for (unsigned int i = 1; i < size; i++)
     {
         // The value we’re trying to put in the right spot then compare with the element to the left
@@ -97,11 +97,11 @@ void insertionSortIntegers(int *array, unsigned int size, int print)
         array[j + 1] = current;
 
         // Print the array after every iteration if print is on
-       if (print)
-        {
-            printf("Pass %u: ", i);
-            printIntArray(array, size);
-        }
+  if (print)
+{
+    printIntArray(array, size);
+}
+
     } 
 
 }
